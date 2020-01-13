@@ -1,0 +1,28 @@
+
+SELECT mydb.class.school,count(mydb.st.id)
+FROM mydb.st
+INNER JOIN mydb.class
+ON mydb.st.clid=mydb.class.id
+group by mydb.class.school
+
+SELECT max(mydb.st.score),min(mydb.st.score),avg(mydb.st.score),mydb.class.school
+FROM mydb.st
+INNER JOIN mydb.class
+ON mydb.st.clid=mydb.class.id
+group by mydb.class.school
+
+SELECT max(mydb.st.score),min(mydb.st.score),avg(mydb.st.score)
+FROM mydb.st
+
+SELECT mydb.st.score,mydb.class.school
+FROM mydb.st
+INNER JOIN mydb.class
+ON mydb.st.clid=mydb.class.id
+where mydb.st.score=(select min(mydb.st.score) from mydb.st);
+
+SELECT mydb.st.score,mydb.class.school
+FROM mydb.st
+INNER JOIN mydb.class
+ON mydb.st.clid=mydb.class.id
+where mydb.st.score=(select max(mydb.st.score) from mydb.st);
+
