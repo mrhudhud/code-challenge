@@ -1,0 +1,40 @@
+file = open ("input.txt","r")
+x=file.read()
+
+final=""
+
+
+def SortDijit(h):
+    global final
+    i=0
+    while i<len(h):
+        j=i+1
+        while (j<len(h)):
+            if (h[j]<h[i]):
+                swap=h[j]
+                h[j]=h[i]
+                h[i]=swap
+            j+=1
+        i+=1
+    for i in h:
+        final+=i
+        
+        
+h=[]
+index=0
+while index < len(x) :
+    if (x[index].isdigit()):
+        h.append(x[index])
+        index+=1
+        
+    else:
+        SortDijit(h)
+        h=[]
+        while ( index < len(x) and not x[index].isdigit() ):
+            h.append(x[index])
+            index+=1
+        SortDijit(h)
+        h=[]
+        
+file = open ("output.txt","w")
+file.write(final)
